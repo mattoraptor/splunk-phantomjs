@@ -1,20 +1,16 @@
+//this needs to be run with the --ignore-ssl-errors=yes option to work
+// on splunk apis with self-signed certs
 
 var page = require("webpage").create();
 var process = {env:{LOG_LEVEL: "WARN"}};
 var splunkjs = require("./splunk-sdk-javascript/index");
 
-
-// page.open("https://localhost:8089/service/auth/login?output_mode=json", 
-// 	"post", "username=admin&password=admin", function(status){
-// 		console.log(status);
-// 		phantom.exit();
-// })
-page.settings.localToRemoteUrlAccessEnabled = true;
-page.settings.webSecurityEnabled = false;
-page.open("http://localhost", function(status) {
-	console.log(status);
-	phantom.exit();
-});
+page.open("https://localhost:8089/services/auth/login?output_mode=json", 
+    "post", "username=admin&password=admin", function(status){
+        console.log(status);
+        console.log(page.content)
+        phantom.exit();
+})
 
 var PhantomHttp = splunkjs.Http.extend({
         init: function() {
