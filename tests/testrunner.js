@@ -3,12 +3,8 @@
 phantom.injectJs("./Jasmine/lib/jasmine-core/jasmine.js");
 phantom.injectJs("./Jasmine/src/console/ConsoleReporter.js");
 
-//tests
-describe("A specs", function() {
-	it("is a thing", function() {
-		expect(true);
-	})
-});
+//test specs
+phantom.injectJs("./http_tests.js");
 
 //phantom.exit called when done
 var finishCallback = jasmine.Runner.prototype.finishCallback;
