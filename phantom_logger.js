@@ -1,6 +1,7 @@
 (function() {
-	var splunkjs = require('./splunk-sdk-javascript/lib/jquery.class');
+	"use strict";
 	var root = exports || this;
+	var splunkjs = require('./splunk-sdk-javascript/lib/jquery.class');
 
 	root.Logger = splunkjs.Class.extend({
 	    init: function(service, opts) {

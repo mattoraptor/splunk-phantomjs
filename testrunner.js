@@ -1,7 +1,7 @@
 //this needs to be run with the --ignore-ssl-errors=yes option to work
 // on splunk apis with self-signed certs
 var process = {env:{LOG_LEVEL: "WARN"}};
-var splunkjs = require("./phantom-index");
+var splunkjs = require("./phantom_index");
 
 var http = new splunkjs.Phantom.Http.PhantomHttp();
 

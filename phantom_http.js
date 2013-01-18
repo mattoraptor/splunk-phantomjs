@@ -42,6 +42,8 @@
                 var complete_response = that._buildResponse(status, response, page.plainText);
                 callback(complete_response);
             });
+
+            return {"wasAborted" : false};
         },
 
         parseJson: function(json) {
