@@ -18,9 +18,13 @@
             this._super();
         },
 
+        pageFactory: function() {
+            return require("webpage").create();
+        },
+
         makeRequest: function(url, message, callback) {
             var that = this;
-            var page = require("webpage").create();
+            var page = that.pageFactory();
             
             page.onResourceReceived = function(response) {
                 that.lastResponse = response;
