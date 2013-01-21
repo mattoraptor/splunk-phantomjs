@@ -27,7 +27,6 @@
 	        };
 	        
 	        this.service.log(message, this.params);
-	        console.log(data);
 	    },
 	    
 	    error: function(data) {
@@ -38,7 +37,6 @@
 	        };
 	        
 	        this.service.log(message, this.params);
-	        console.error(data);
 	    },
 	    
 	    info: function(data) {
@@ -49,7 +47,6 @@
 	        };
 
 	        this.service.log(message, this.params);
-	        console.info(data);
 	    },
 	    
 	    warn: function(data) {
@@ -60,7 +57,6 @@
 	        };
 	        
 	        this.service.log(message, this.params);
-	        console.warn(data);
 	    },
 	});
 })();
