@@ -25,19 +25,23 @@
         makeRequest: function(url, message, callback) {
             var that = this;
             var page = that.pageFactory();
-            
+            var ret = {};
+
             page.onResourceReceived = function(response) {
                 that.lastResponse = response;
             };
         	page.customHeaders = message.headers;
             page.open(url, message.method, message.body, function (status) {
+                
                 if (status === "success") {
+                    ret.wasAborted = false;
                 } else {
-                    console.log(url);
-                    console.log(status);
-                    console.log(JSON.stringify(message));
-                    console.log(JSON.stringify(page));
-                    console.log(JSON.stringify(that.lastResponse));
+                    ret.wasAborted = true;
+                    console.error([url,
+                        status, 
+                        JSON.stringify(message),
+                        JSON.stringify(page),
+                        JSON.stringify(that.lastResponse)]);
                 }
                 var response = {
                     statusCode: that.lastResponse.status,
@@ -47,7 +51,7 @@
                 callback(complete_response);
             });
 
-            return {"wasAborted" : false};
+            return ret;
         },
 
         parseJson: function(json) {
